@@ -23,7 +23,7 @@ def run(args: List[str] = typer.Argument(...)):
         else:
             # Run whatever code you want and then set the context.output with the response you want to send.
             # The output can be a string, an Artifact, or a ListArtifact
-            output_msg = TextArtifact(f"You sent: {args[0]}")
+            output_msg = TextArtifact(f"You sent: {args}")
 
             # Use context.output to publish the output message
             context.output = output_msg
