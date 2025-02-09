@@ -3,12 +3,13 @@ from typing import List
 import typer
 from griptape.structures import Agent
 from griptape.utils import GriptapeCloudStructure
+from griptape.artifacts import TextArtifact
 
 app = typer.Typer(add_completion=False)
 
 # If you want to run a Griptape Structure, set this to True
 # otherwise, if you're just running regular Python code, set it to False
-use_structure = True
+use_structure = False
 
 
 @app.command()
@@ -22,7 +23,7 @@ def run(args: List[str] = typer.Argument(...)):
         else:
             # Run whatever code you want and then set the context.output with the response you want to send.
             # The output can be a string, an Artifact, or a ListArtifact
-            output_msg = f"You sent: {args}"
+            output_msg = TextArtifact(f"You sent: {args[1]}")
 
             # Use context.output to publish the output message
             context.output = output_msg
